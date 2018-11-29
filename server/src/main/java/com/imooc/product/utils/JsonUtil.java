@@ -9,13 +9,14 @@ public class JsonUtil {
 
     /**
      * 转化为Json字符串
+     *
      * @param object
      * @return
      */
     public static String toJson(Object object) {
         try {
             return objectMapper.writeValueAsString(object);
-        }catch (JsonProcessingException e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return null;

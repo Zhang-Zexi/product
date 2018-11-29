@@ -13,7 +13,10 @@ import com.imooc.product.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.net.httpserver.HttpServerImpl;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,13 +36,15 @@ public class ProductController {
     private CategoryService categoryService;
 
     /**
-     * 1.查询所有在架的商品
+     * 1.查询所有在架的商品l
      * 2.获取类目的type列表
      * 3.查询类目
      * 4.构造数据
      */
     @GetMapping("/list")
-    public ResultVO<ProductVO> list() {
+//    @CrossOrigin(allowCredentials = "true", )
+    // allowCredentials = "true"目的是允许cookie跨域
+    public ResultVO<ProductVO> list(HttpServletRequest request) {
         //1.查询所有在架的商品
         List<ProductInfo> productInfoList = productService.findUpAll();
 
