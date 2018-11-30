@@ -86,6 +86,11 @@ public class ProductController {
     @PostMapping("/listForOrder")
     //此处用@RequestBody,以上必须用@PostMapping
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return productService.findList(productIdList);
     }
 
